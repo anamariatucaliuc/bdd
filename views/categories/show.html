@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h2> Personnages de type <span style="color: {{categorie.color}}">{{categorie.name}} </span></h2>
+  <hr>
+  {% for s in personnages%}
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <a href='/{{s._id}}' >{{s.name}} n° {{s.number}}</a>
+          </div>
+          <div class="panel-body">
+                  {{s.description}}
+          </div>
+      </div>
+  {% endfor %}
+{% endblock %}

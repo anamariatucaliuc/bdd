@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+ <div class="row">
+        <div class="col-sm-3">
+              <img src="/uploads/{{personnage.picture}}" alt="{{personnage.name}}" style="width: 100%" >
+           
+        </div> 
+        <div class="col-sm-9">
+                <h2>{{personnage.name}}<small> Personnage n°{{personnage.number}}</small> </h2> 
+                <hr>
+                <a href="/edit/{{personnage._id}}" class="btn btn-primary">Editer</a>
+                <a href="/delete/{{personnage._id}}" class="btn btn-danger">Supprimer</a>
+                <hr>
+                <p class="lead">
+                    {{personnage.description}}
+                </p>
+                <h3> Categories :</h3>
+                {% for s in personnage.categories %}
+                <a href="/categories/{{s.name}}" style="background-color: {{s.color}}" class="badge badge-pill badge-primary">{{s.name}}</a>
+                {%endfor%}
+        </div>
+ </div>   
+
+    
+{% endblock %}
+
+
+
+ <!-- pour les categories -->
+ <!-- <span class="label label-default">{{s.name}} </span> -->
