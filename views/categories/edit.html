@@ -1,0 +1,19 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+  <form method="POST" action="{{endpoint}}" enctype="multipart/form-data">
+    <hr>
+    <div class="form-group">
+      <label for="name">Nom du catégorie</label>
+      <input type="text" id="name" name="name" class="form-control" value="{{categorie.name}}">
+      <hr>
+    </div>
+    <div class="form-group">
+      <label for="name">Couleur de la categorie</label>
+      <input type="text" id="color" name="color" class="form-control" value="{{categorie.color}}">
+      <hr>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Enregistrer">
+  </form>
+{% endblock %}

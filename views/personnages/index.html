@@ -2,16 +2,31 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h2> Ma liste </h2>
+    <h2> Liste de personnages </h2>
     <a href="/new" class="btn btn-primary">Ajouter un personnage</a>
+    <a href="/categories/new" class="btn btn-primary">Ajouter une catégorie des personnages</a>
+    <hr>
+    <form method="GET" action="/" enctype="multipart/form-data">
+    <div class="form-row">
+    </form>
+    <form method="GET" action="/" enctype="multipart/form-data">
+       <div class="col"><input type="checkbox" id="sort" name="sort" onclick='this.form.submit();' value="nom" >
+        <label for="nom">Tri par nom</label></div>
+    </form>
+      <hr>
+  </div>
     <hr>
     {% for s in personnages %}
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="card card-primary">
+            <div class="card-header">
                 <a href='/{{s._id}}' >{{s.name}} n° {{s.number}}</a>
+                {% for c in s.categories %}
+                <a href="/categories/{{c.name}}" style="background-color: {{c.color}}" class="badge badge-pill badge-primary">{{c.name}}</a>
+                {% endfor %}
             </div>
-            <div class="panel-body">
-                    {{s.description}}
+            <div class="card-body">
+                <div style="width: 1080px; text-overflow: ellipsis; white-space: nowrap;
+                overflow: hidden;">  {{s.description}}</div> 
             </div>
         </div>
     {% endfor %}

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<!--Document Html5-->
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+     <!-- Les deux scripts pour le formulaire et pour le changement de la feuille de style-->
+    <script src="formulaire.js"></script>
+    <script type="text/javascript" src="switch.js"></script>
+    <!--script pour la galerie photo click sur la galerie pour agrandir-->
+    <script src="photos.js"></script>
+    <!--titre -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <title>Ma super application web</title>
+    <link rel="icon" type="image/png" href="images/logo2.png" />
+    <script src="../javascript/cookies.js"></script>
+    <style type="text/css">
+        body {
+        color:black;
+        background-image:url("/images/fond_jaune.png");
+        background-attachment: fixed;
+        background-repeat: repeat;
+    }
+    h1 {
+        text-align:center;
+    }
+    /* Définition des polices personnalisées */
+
+
+/*    Trebuchet MS(police courante) ;
+
+BallparkWeiner(police exotique) ;
+
+Day Roman(police exotique).*/
+
+@font-face
+/*déclarer les nouvelles polices*/
+
+{
+    font-family: 'BallparkWeiner';
+    src: url('polices/ballpark.eot');
+    src: url('polices/ballpark.eot?#iefix') format('embedded-opentype'), url('polices/ballpark.woff') format('woff'), url('polices/ballpark.ttf') format('truetype'), url('polices/ballpark.svg#BallparkWeiner') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Dayrom';
+    src: url('polices/dayrom.eot');
+    src: url('polices/dayrom.eot?#iefix') format('embedded-opentype'), url('polices/dayrom.woff') format('woff'), url('polices/dayrom.ttf') format('truetype'), url('polices/dayrom.svg#Dayrom') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* Eléments principaux de la page */
+
+
+/* définir quelques styles globaux pour tout le design de la page*/
+
+body {
+    background: url('/images/fond_jaune.png');
+    /*une image de fond fond_jaune.png*/
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    /*une police*/
+    color: #181820;
+    /*une couleur de texte par défaut*/
+}
+
+#bloc_principal
+/*le bloc qui englobe toute la page*/
+
+{
+    width: 80%;
+    /* un design qui s'adapte aux dimensions de l'écran du visiteur*/
+    margin: auto;
+    /* les marges automatiques, le design sera centré*/
+}
+
+
+/* Header */
+
+header
+/*l'en tete*/
+
+{
+    background: url('/images/separateur.png') repeat-x bottom;
+    /*display: flex;   */
+    /* Les éléments sont positionnés avec flexbox */
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#titre_principal {
+    display: flex;
+    flex-direction: column;
+    /*verticalement*/
+}
+
+#logo
+/* le logo en haut à gauche*/
+
+{
+    display: flex;
+    flex-direction: row;
+    /*horizontalement*/
+}
+
+#logo img {
+    width: 60px;
+    /*dimensions*/
+    height: 60px;
+}
+
+header h1 {
+    font-family: 'BallparkWeiner', serif;
+    font-size: 2.5em;
+    font-weight: normal;
+    margin: 0 0 0 10px;
+}
+
+header h2 {
+    font-family: Dayrom, serif;
+    font-size: 1em;
+    margin-top: 0px;
+}
+
+
+/* Navigation */
+
+nav ul {
+    list-style-type: none;
+    /* retirer l'image ronde servant de puce*/
+    display: flex;
+    /*Chaque élément de la liste (<li>) est positionné dans une Flexbox et on peut les mettre horizontalement*/
+}
+
+nav li {
+    margin-right: 15px;
+    /*bordure*/
+}
+
+nav a {
+    font-size: 1.3em;
+    color: #181818;
+    padding-bottom: 3px;
+    text-decoration: none;
+    font-family: Dayrom, serif;
+    font-weight: normal;
+}
+
+nav a:hover {
+    color: #760001;
+    border-bottom: 3px solid #760001;
+}
+
+
+/* Bannière */
+
+#banniere_image
+/*des angles arrondis*/
+
+{
+    margin-top: 16px;
+    height: 202px;
+    border-radius: 7px;
+    background: url('/images/computer3.jpg') no-repeat;
+    position: relative;
+    box-shadow: 0px 4px 4px #1c1a19;
+    margin-bottom: 25px;
+}
+
+#banniere_description
+/*sur un fond transparant*/
+
+{
+    position: absolute;
+    bottom: 0;
+    border-radius: 0px 0px 5px 5px;
+    width: 99.6%;
+    height: 35px;
+    padding-top: 15px;
+    padding-left: 5px;
+    background-color: rgba(25, 24, 24, 0.8);
+    color: white;
+    font-size: 1em;
+}
+
+.bouton_rouge
+/*le bouton rouge pour les angles arrondis*/
+
+{
+    height: 28px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    background: url('/images/fond_degraderouge.png') repeat-x;
+    border: 1px solid #760001;
+    border-radius: 5px;
+    font-size: 1em;
+    text-align: center;
+    padding: 3px 8px 0px 8px;
+    color: white;
+    text-decoration: none;
+}
+
+.bouton_rouge img {
+    border: 0;
+    margin-bottom: auto;
+}
+
+
+/* Corps 2 balises article + aside */
+
+#section {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+article {
+    margin-right: 20px;
+    flex: 3;
+    text-align: justify;
+}
+
+article p
+/*les paragraphes*/
+
+{
+    font-size: 0.8em;
+}
+
+article h3 {
+    font-family: Dayrom, serif;
+    font-weight: normal;
+}
+
+.categorie {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+
+/*********************Menu aside******************/
+
+aside {
+    flex: 1.2;
+    position: relative;
+    background-color: #706b64;
+    box-shadow: 0px 2px 5px #1c1a19;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-size: 0.9em;
+    height: 50%;
+}
+
+aside h4 {
+    font-family: Dayrom, serif;
+    margin: auto;
+    text-align: center;
+}
+
+#fleche {
+    position: absolute;
+    top: 100px;
+    left: -12px;
+}
+
+#photo_aside {
+    text-align: center;
+}
+
+#photo_aside img {
+    border: 1px solid #181818;
+}
+
+aside img {
+    margin-right: 5px;
+}
+
+aside p {
+    font-family: Dayrom, serif;
+    margin: auto;
+    text-align: center;
+}
+
+
+/* Footer */
+
+footer {
+    display: flex;
+    background: url('/images/ico_top.png') no-repeat top center, url('/images/separateur.png') repeat-x top, url('images/ombre.png') repeat-x top;
+    padding-top: 25px;
+    height:15%;
+}
+
+footer h1 {
+    font-family: Dayrom, serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    /*pour que les titres soient toujours écrits en majuscules*/
+    font-size: 1.1em;
+}
+
+footer p,
+footer ul {
+    font-size: 0.8em;
+}
+
+#Polytech {
+    width: 10%;
+}
+
+#temps {
+    width: 23%;
+    height: 15%;
+}
+
+
+/**************************gallerie photo*******************/
+
+* {
+    box-sizing: border-box;
+}
+
+.rowgallery {
+    width: 42%;
+}
+
+.rowgallery > .columngallery {
+    padding: 0 5px;
+}
+
+.rowgallery:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.columngallery {
+    float: left;
+    width: 23%;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #e7a27c;
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1200px;
+}
+
+
+/* The Close Button */
+
+.close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.mySlides {
+    display: none;
+}
+
+.cursor {
+    cursor: pointer
+}
+
+
+/* Next & previous buttons */
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    -ms-user-select: none;
+   -moz-user-select: none;
+   -webkit-user-select: none;
+    -webkit-user-select: none;
+}
+
+
+/* Position the "next button" to the right */
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Number text (1/3 etc) */
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+img {
+    margin-bottom: -4px;
+}
+
+.caption-container {
+    text-align: center;
+    background-color: black;
+    padding: 2px 16px;
+    color: black;
+}
+
+.demo {
+    opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+    opacity: 1;
+}
+
+img.hover-shadow {
+    transition: 0.3s
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+#photos {
+    width: 40%;
+}
+
+#photos img {
+    border: 1px solid #181818;
+    margin-right: 2px;
+}
+
+#liens {
+    width: 25%;
+}
+
+#liens ul {
+    list-style-image: url('/images/ico_liensexterne.png');
+    padding-left: 2px;
+}
+
+#liens a {
+    text-decoration: none;
+    color: #760001;
+}
+
+#listes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0;
+}
+
+
+/*******************pour le CV*******************/
+
+.CV_bloc {
+    padding: 10px 80px;
+    margin: 20px auto;
+    background: #efe2e2;
+    border: solid #966d6d;
+    border-radius: 8px;
+}
+
+.bloc1 {
+    border-bottom: 1px solid #ccc;
+}
+
+.titre1 h1 {
+    font-size: 200%;
+    color: #355779;
+}
+
+
+/*color*/
+
+.info {
+    margin-top: 7px;
+    font-size: 12px;
+}
+
+.titre3 h3 {
+    font-size: 15px;
+    color: #355779;
+}
+
+.bloc2 {
+    border-bottom: 1px solid #ccc;
+}
+
+.titre2 h1 {
+    font-size: 200%;
+    color: #355779;
+}
+
+
+/*color*/
+
+.education {
+    border-bottom: 1px solid #ccc;
+}
+
+.education h2 {
+    top: 0.35em;
+    right: 0;
+    font-size: 150%;
+    color: #333;
+}
+
+.education h4 {
+    top: 0.35em;
+    right: 0
+}
+
+.education2 {
+    border-bottom: 1px solid #ccc;
+}
+
+.education2 h2 {
+    top: 0.35em;
+    right: 0;
+    font-size: 150%;
+    color: #333;
+}
+
+.education2 h4 {
+    top: 0.35em;
+    right: 0
+}
+
+.bloc3 h1 {}
+
+.skills {
+    width: 20%;
+    float: left;
+}
+
+.skills li {
+    line-height: 24px;
+    border-bottom: 1px solid #ccc;
+}
+
+a#pdf1 {
+    float: right;
+    background: #734242;
+    color: white;
+    padding: 6px 50px 6px 12px;
+    margin-bottom: 6px;
+    text-decoration: none;
+}
+
+a#pdf1:hover {
+    background: #222;
+}
+
+
+/**************************Pour le formulaire********************/
+
+
+/* Below line is used for online Google font */
+
+hr {
+    margin: 10px -50px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-bottom: 40px;
+}
+
+div.container {
+    width: 900px;
+    height: 610px;
+    margin: 35px auto;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    /*une police*/
+}
+
+div.main {
+    padding: 10px 50px 10px;
+    margin: auto;
+    width: 100%;
+    border: 2px solid gray;
+    border-radius: 10px;
+    /*font-family: raleway;*/
+    float: left;
+    margin-top: 60px;
+}
+
+input[type=text] {
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 25px;
+    margin-top: 5px;
+    border: 2px solid #ccc;
+    color: #4f4f4f;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+label {
+    color: #464646;
+    text-shadow: 0 1px 0 #fff;
+    font-size: 14px;
+    font-weight: bold;
+    color: #648880;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+#btn_id {
+    font-size: 16px;
+    background: linear-gradient(#ffbc00 5%, #ffdd7f 100%);
+    border: 1px solid #e5a900;
+    color: #4E4D4B;
+    font-weight: bold;
+    cursor: pointer;
+    width: 47.5%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 7px 0;
+}
+
+#btn_id:hover {
+    background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);
+}
+
+textarea {
+    /*font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    width: 30%;
+    height: 75px;
+}
+/**********************Page liens**************/
+
+    </style>
+</head>
+
+<!--body -->
+<body>
+    <div id="bloc_principal">
+        <header>
+            <!--l'en-tête -->
+            <div id="titre_principal">
+                <!-- Div titre+logo-->
+                <div id="logo">
+                    <img src="/images/logo.png" alt="Logo" />
+                    <h3>Projet BDD avril 2019</h3>
+                </div>
+                <h2>Site des personnages</h2>
+            </div>
+            <nav>
+               
+            </nav>
+            <!--Butons pour changer de style -->
+        </header>
+        <!-- Fin header-->
+        <!--Buton banière image+ description -->
+        <div id="banniere_image">
+            <div id="banniere_description">
+               
+                <a href="/" > </a>
+            </div>
+        </div>
+        <div id="section">
+            <!--Dans section on a format article + onglet actualités avec aside -->
+            <article>
+                {% block content %}{% endblock %}
+            </article>
+            <aside>
+                <h4>Actualités</h4>
+                <!-- Onglet actualités sites des professeurs + site fb/twitter/vimeo d'Aix Marseille + liste de télechargement étudiants 3A -->
+                <img src="/images/bulle.png" alt="" id="fleche" />
+                <p id="photo_aside"><img src="/images/info1.jpg" alt="Photo-actualités" /></p>
+                <p>Je suis étudiante en 4A à Polytech Marseille Informatique et dans cette section vous trouvez les actualités.</p>
+                <br>
+                <p><a href="http://sebastien.mavromatis.free.fr" target="_blank"> Site du Professeur Mavromatis </a></p>
+                <p><a href="http://peter.banton.perso.luminy.univ-amu.fr/" target="_blank"> Site du Professeur Banton </a></p>
+                <br>
+                <p>
+                    <a href="https://www.facebook.com/AlumniPolytechMarseille/" target="_blank"><img src="images/facebook.png" alt="Facebook" /></a>
+                    <a href="https://twitter.com/univamu" target="_blank"><img src="images/twitter.png" alt="Twitter" /></a>
+                    <a href="https://vimeo.com/univamu" target="_blank"><img src="images/vimeo.png" alt="Vimeo" /></a>
+                    <a href="https://www.flickr.com/photos/8505608@N02/" target="_blank"><img src="images/flickr.png" alt="Flickr" /></a>
+                </p>
+                <br>
+                 </aside>
+        </div>
+        <footer>
+            <!-- Footer debut-->
+            <!--Logo Polytech lien extern vers la page https://polytech.univ-amu.fr/ et validation w3 css+html-->
+            <div id="Polytech">
+                <p>
+                    <a href="https://polytech.univ-amu.fr/"> <img src="/images/polytech.png" alt="Logo Polytech Aix-Marseille" /> </a>
+                </p>
+                <a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fana-maria.tucaliuc.etu.perso.luminy.univ-amu.fr%2F&profile=css3&usermedium=all&warning=1&vextwarning=&lang=ro">
+                    <img style="border:0;height:30px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Valide !" />
+                    <img style="border:0;height:30px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !" />
+                </a>
+                <a href="https://validator.w3.org/nu/?showsource=yes&doc=http%3A%2F%2Fana-maria.tucaliuc.etu.perso.luminy.univ-amu.fr%2Findex.html">
+                    <img style="border:0;height:30px" src="images/validator.gif" alt="HTML Valide !" />
+                </a>
+                <!-- Date et l'heure-->
+            </div>
+            <div id="temps">
+                <div style="text-align:center;padding:1em 0;">
+                    <h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/fr/city/2988507"><span style="color:gray;">Heure actuelle</span><br />Paris, France</a></h4>
+                    <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=fr&size=small&timezone=Europe%2FParis" width="150" height="110" style="border:0"></iframe>
+                </div>
+            </div>
+            <!-- Gallerie photo interactive click pour agrandir l'image-->
+            <div class="rowgallery">
+                <h1>Click pour agrandir</h1>
+                <div class="columngallery">
+                    <img src="/images/1.jpg" width="90" height="80" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                </div>
+                <div class="columngallery">
+                    <img src="/images/2.jpg" width="90" height="80" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                </div>
+                <div class="columngallery">
+                    <img src="/images/3.jpg" width="90" height="80" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+                </div>
+                <div class="columngallery">
+                    <img src="/images/4.jpg" width="90" height="80" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+                </div>
+            </div>
+            <div id="myModal" class="modal">
+                <span class="close cursor" onclick="closeModal()">&times;</span>
+                <div class="modal-content">
+                    <div class="mySlides">
+                        <div class="numbertext">1 / 4</div>
+                        <img src="/images/1.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlides">
+                        <div class="numbertext">2 / 4</div>
+                        <img src="/images/2.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlides">
+                        <div class="numbertext">3 / 4</div>
+                        <img src="/images/3.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlides">
+                        <div class="numbertext">4 / 4</div>
+                        <img src="/images/4.jpg" style="width:100%">
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    <div class="caption-container">
+                        <p id="caption"></p>
+                    </div>
+                    <div class="columngallery">
+                        <img class="demo cursor" src="/images/1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Photo 1">
+                    </div>
+                    <div class="columngallery">
+                        <img class="demo cursor" src="/images/2.jpg" style="width:100%" onclick="currentSlide(2)" alt="Photo 2">
+                    </div>
+                    <div class="columngallery">
+                        <img class="demo cursor" src="/images/3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Photo 3">
+                    </div>
+                    <div class="columngallery">
+                        <img class="demo cursor" src="/images/4.jpg" style="width:100%" onclick="currentSlide(4)" alt="Photo 4">
+                    </div>
+                </div>
+            </div>
+            <!-- Liens externes-->
+            <div id="liens">
+                <h1>Liens externes</h1>
+                <div id="listes">
+                    <ul>
+                        <li><a href="https://polytech.univ-amu.fr/formations/cycle-ingenieur/informatique-reseau-multimedia" target="_blank">Polytech Informatique</a></li>
+                        <li><a href="https://www.univ-amu.fr/" target="_blank">Aix Marseille Université</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="http://etudiant.marseille.fr/" target="_blank">Ville de Marseille-étudiants</a></li>
+                        <li><a href="http://www.sortiedamphi.fr/" target="_blank">Sortie d'amphi</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <div class="text-center">
+            ©2019 Copyright Ana-Maria Tucaliuc - Projet BDD 
+          </div>
+        <!-- Footer fin-->
+    </div>
+</body>
+
+</html>

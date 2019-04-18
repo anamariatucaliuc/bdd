@@ -29,6 +29,7 @@ var app = express();
 // on utilse le middleware express statique
 // quand dans le navigateur on mets /css/.... ----> express va recuperer le fichier statique css de bootstrap
 app.use('/css',express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+app.use('/images', express.static(__dirname + '/images'));
 //*********************************************************************************** */
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

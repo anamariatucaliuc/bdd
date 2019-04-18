@@ -11,11 +11,21 @@ var Categorie = require('./../models/Categorie');
 
 
 // définir la page d'accueil
+// on éxécute la fonction , on récupère request et response
+// récupérer le personange et la catégorie de chaque personnage
 router.get('/',(req,res) => {
-	Personnage.find({}).populate('categories').then(personnages => {				// on éxécute la fonction , on récupère request et response
-      res.render('personnages/index.html', {personnages: personnages}) ;  			// récupérer le personange et la catégorie de chaque personnage
-    });
+		if (req.query.sort){	
+						Personnage.find({}).sort({ name : 1 }).populate('categories').then(personnages => {
+							res.render('personnages/index.html', { personnages: personnages });
+						})
+		}
+		else {
+		Personnage.find({}).populate('categories').then(personnages => {				// on éxécute la fonction , on récupère request et response
+     	res.render('personnages/index.html', {personnages: personnages}) ;  			// récupérer le personange et la catégorie de chaque personnage
+		});
+	}
 });
+
 
 // routes vers le formulaire 
 // endpoint c'est l'URL du formulaire à appeller
